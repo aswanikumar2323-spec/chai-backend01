@@ -8,7 +8,6 @@ import fs from "fs"
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
   
-
 const uploadOnCloudinary = async (localFilePath)=>{
     try {
         if(!localFilePath) return null
@@ -25,12 +24,11 @@ const uploadOnCloudinary = async (localFilePath)=>{
 
     } catch (error) {
         if(localFilePath){
-            fs.unlinkSync(localFilePath)      //remove the locally saved temporary file as the upload operation got failed
+            fs.unlinkSync(localFilePath)  //remove the locally saved temporary file as the upload operation got failed
         }
         console.log("Cloudinary upload failed:", error)
         return null
     }
 } 
-
 
 export {uploadOnCloudinary}
